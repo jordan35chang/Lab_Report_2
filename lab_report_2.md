@@ -30,11 +30,34 @@ The failure-inducing input:
 A non failure-inducing input:
 ```
 @Test 
-	public void testReverseInPlace() {
+  public void testReverseInPlace() {
     int[] input1 = { 3 };
     ArrayExamples.reverseInPlace(input1);
     assertArrayEquals(new int[]{ 3 }, input1);
 	}
 ```
+## The symptom:
+![Image](reverseInPlace_Error.png)
+
+## The Bug:
+Before:
+```
+static void reverseInPlace(int[] arr) {
+    for(int i = 0; i < arr.length; i += 1) {
+      arr[i] = arr[arr.length - i - 1];
+    }
+  }
+```
+After:
+```
+static void reverseInPlace(int[] arr) {
+    for(int i = 0; i < arr.length/2; i += 1) {
+      int temp = arr[i];
+      arr[i] = arr[arr.length - i - 1];
+      arr[arr.length - i - 1] = temp;
+    }
+  }
+```
+This fixes the issue because the method previously had a for loop that would go the full length of the array, which as a result would reverse the array, and then reverse it again, resulting in the array being in the same order. In order to fix this, the for loop must span half the length of the array, and there also has to be a variable holding the current value in the array, in order to reverse properly.
 # Part 3
 From the lab in week 2, I learned more about how code can be used in urls. Prior to the lab, I never really thought about how urls actually functioned, so being able to woirk with code that can adjust the output of a url based on the queries provided was interesting and useful.
