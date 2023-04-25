@@ -18,7 +18,7 @@ static void reverseInPlace(int[] arr) {
     }
   }
 ```
-The input:
+The failure-inducing input:
 ```
 @Test
   public void newTest(){
@@ -26,6 +26,15 @@ The input:
     ArrayExamples.reverseInPlace(input2);
     assertArrayEquals(new int[]{1,2,3}, input2);
   }
+```
+A non failure-inducing input:
+```
+@Test 
+	public void testReverseInPlace() {
+    int[] input1 = { 3 };
+    ArrayExamples.reverseInPlace(input1);
+    assertArrayEquals(new int[]{ 3 }, input1);
+	}
 ```
 # Part 3
 From the lab in week 2, I learned more about how code can be used in urls. Prior to the lab, I never really thought about how urls actually functioned, so being able to woirk with code that can adjust the output of a url based on the queries provided was interesting and useful.
