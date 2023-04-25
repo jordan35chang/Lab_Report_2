@@ -11,21 +11,21 @@ In this screenshot, my handleRequest method is being called. In this method, the
 ## (Using the bug from reverseInPlace)
 ## Failure-Inducing Input:
 The method:
-'''
+```
 static void reverseInPlace(int[] arr) {
     for(int i = 0; i < arr.length; i += 1) {
       arr[i] = arr[arr.length - i - 1];
     }
   }
-'''
+```
 The input:
-'''
+```
 @Test
   public void newTest(){
     int[] input2 = {3,2,1};
     ArrayExamples.reverseInPlace(input2);
     assertArrayEquals(new int[]{1,2,3}, input2);
   }
-'''
+```
 # Part 3
 From the lab in week 2, I learned more about how code can be used in urls. Prior to the lab, I never really thought about how urls actually functioned, so being able to woirk with code that can adjust the output of a url based on the queries provided was interesting and useful.
