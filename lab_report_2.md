@@ -1,6 +1,6 @@
 # Part 1
 ## Code for StringServer:
-![Image](StringServer.jpg)
+![Image](StringServer.png)
 ## /add-message being used:
-![Image]()
+![Image](Add)
 ![Image]()
